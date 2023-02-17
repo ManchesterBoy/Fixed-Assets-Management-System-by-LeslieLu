@@ -25,7 +25,7 @@ Vue+Springboot 管理系统
 
 记得从Maven中导入所需的项目依赖
 
-代码生成器模版在resource/templates，若需定制课自行修改相关参数，生成时需在CodeGenerator需要修改输出路径、表名等参数
+代码生成器模版在resource/templates，若需定制可自行修改相关参数，生成时需在CodeGenerator需要修改输出路径、表名等参数
 
 前端运行需通过终端进入到vue的文件中使用命令:npm run serve （需要有node.js情况下才能启动）
 后端运行通过启动 SbootApplication 即可
