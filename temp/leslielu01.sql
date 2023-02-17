@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 17/02/2023 21:20:17
+ Date: 17/02/2023 18:52:43
 */
 
 SET NAMES utf8mb4;
@@ -203,29 +203,6 @@ INSERT INTO `sys_file` VALUES (45, '123.jpg', 'jpg', 124, 'http://localhost:9090
 INSERT INTO `sys_file` VALUES (46, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
 INSERT INTO `sys_file` VALUES (47, '28D56B4E1EA46D615B000C36C56ACEE9.jpg', 'jpg', 67, 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 1, '28d56b4e1ea46d615b000c36c56acee9');
 INSERT INTO `sys_file` VALUES (48, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (49, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (50, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (51, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (52, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (53, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (54, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (55, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (56, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (57, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (58, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (59, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (60, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (61, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (62, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (63, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (64, '753.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (65, '0076EekLly1hamnddd4dkj30t40szgpf.jpg', 'jpg', 85, 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 1, '8f2c70f1a867771ffe0fccf1b95fa4f6');
-INSERT INTO `sys_file` VALUES (66, '753.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (67, '花.jpg', 'jpg', 72, 'http://localhost:9090/file/0ed2621228544416b2cf72fe304f7b29.jpg', 0, 1, '019f005b7e68819d331ddec322581c85');
-INSERT INTO `sys_file` VALUES (68, '753.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (69, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
-INSERT INTO `sys_file` VALUES (70, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
-INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -353,7 +330,7 @@ CREATE TABLE `sys_user`  (
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES (2, 'admin', 'admin', '管理员', 'admin@qq.com', '12345678901', '广东肇庆', '2023-01-26 16:36:41', 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 'ROLE_ADMIN');
-INSERT INTO `sys_user` VALUES (3, '牛子哥', '123', '玉子', '258@qq.com', '12378945688', '广东普宁', '2023-12-26 17:17:01', 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 'ROLE_ADMIN');
+INSERT INTO `sys_user` VALUES (3, '牛子哥', '123', 'niu', '258@qq.com', '123789', '广东普宁', '2023-12-26 17:17:01', 'https://i0.hdslb.com/bfs/article/e56c48d8323642d74f44102d8a0754807567df84.jpg@942w_1449h_progressive.webp', 0, 'ROLE_ADMIN');
 INSERT INTO `sys_user` VALUES (4, 'asd', '111', 'asd', 'asd@qq.com', '12345', '广东汕头', '2023-01-28 15:24:18', 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 'ROLE_USER');
 INSERT INTO `sys_user` VALUES (9, '555', '111', '555', NULL, NULL, '广东梅州', '2023-07-28 15:16:25', 'https://img0.baidu.com/it/u=49549001,1235675790&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=562', 0, 'ROLE_USER');
 INSERT INTO `sys_user` VALUES (11, 'ert', '111', 'qwe', '147@qq.com', '14893', '广东四会', '2023-08-28 18:32:55', NULL, 0, 'ROLE_USER');
