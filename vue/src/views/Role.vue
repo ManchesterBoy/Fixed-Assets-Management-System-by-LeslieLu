@@ -72,18 +72,18 @@
       </el-table>
 
       <!--          分页设置, page-sizes =>> 每一页可有多少条数据-->
-      <div style="padding: 10px 0">
-        <el-pagination
+<!--      <div style="padding: 10px 0">-->
+<!--        <el-pagination-->
 
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="pageNum"
-            :page-sizes="[5, 10, 15, 20]"
-            :page-size="pageSize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="total">
-        </el-pagination>
-      </div>
+<!--            @size-change="handleSizeChange"-->
+<!--            @current-change="handleCurrentChange"-->
+<!--            :current-page="pageNum"-->
+<!--            :page-sizes="[5, 10, 15, 20]"-->
+<!--            :page-size="pageSize"-->
+<!--            layout="total, sizes, prev, pager, next, jumper"-->
+<!--            :total="total">-->
+<!--        </el-pagination>-->
+<!--      </div>-->
 
       <!--          编辑时的表单-->
       <el-dialog title="角色信息" :visible.sync="dialogFormVisible" width="30%" >
@@ -198,17 +198,29 @@ export default {
   },
   methods:{
     load(){ //请求分页查询数据，加载页面
-      this.request.get("role/page",{
+      // this.request.get("role/page",{
+      //   params:{
+      //     pageNum: this.pageNum,
+      //     pageSize: this.pageSize,
+      //     name: this.name,
+      //   }
+      // }).then(res => {
+      //   console.log(res)
+      //
+      //   this.tableData = res.data.records
+      //   this.total = res.data.total
+      //
+      // })
+
+      this.request.get("role/roles",{
         params:{
-          pageNum: this.pageNum,
-          pageSize: this.pageSize,
           name: this.name,
         }
       }).then(res => {
         console.log(res)
 
-        this.tableData = res.data.records
-        this.total = res.data.total
+        this.tableData = res.data
+
 
       })
 

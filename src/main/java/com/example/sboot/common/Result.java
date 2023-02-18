@@ -3,6 +3,9 @@ package com.example.sboot.common;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.StringRedisTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * 接口统一返回包装类
@@ -17,6 +20,8 @@ public class Result {
     private String code;
     private String msg;     //
     private Object data;
+
+
 
     public static Result success(){
         return new Result(Constants.CODE_200,"",null);
@@ -33,5 +38,7 @@ public class Result {
     public static Result error(){
         return new Result(Constants.CODE_500,"系统错误",null);
     }
+
+
 
 }

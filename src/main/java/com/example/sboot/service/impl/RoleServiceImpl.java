@@ -1,6 +1,7 @@
 package com.example.sboot.service.impl;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.sboot.entity.Menu;
 import com.example.sboot.entity.Role;
@@ -68,5 +69,21 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     public List<Integer> setRoleMenu(Integer roleId) {
 
         return roleMenuMapper.selectByRoleId(roleId);
+    }
+
+    @Override
+    public List<Role> findRole(String name) {
+        QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
+
+        if(StrUtil.isNotBlank(name)){
+            queryWrapper.like("name",name);
+        }
+        //单条件模糊查询
+        if(!"".equals(name)){
+            queryWrapper.like("name",name);
+        }
+
+        List<Role> list = list(queryWrapper);
+        return list;
     }
 }

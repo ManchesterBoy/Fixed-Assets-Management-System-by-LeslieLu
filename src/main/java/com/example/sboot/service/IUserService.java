@@ -23,4 +23,6 @@ public interface IUserService extends IService<User> {
     Page<User> findPage(Page<User> objectPage, String username, String email, String address);
 
     void updatePassword(UserPasswordDTO userPasswordDTO);
+
+
 }

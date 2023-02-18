@@ -18,4 +18,6 @@ public interface IRoleService extends IService<Role> {
     void setRoleMenu(Integer roleId, List<Integer> menuIds);
 
     List<Integer> setRoleMenu(Integer roleId);
+
+    List<Role> findRole(String name);
 }

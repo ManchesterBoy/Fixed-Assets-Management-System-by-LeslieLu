@@ -1,10 +1,15 @@
 package com.example.sboot.controller;
 
+import cn.hutool.core.lang.TypeReference;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.sboot.common.Constants;
+import com.example.sboot.common.RedisClearCache;
 import com.example.sboot.entity.Dict;
 import com.example.sboot.mapper.DictMapper;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,23 +41,38 @@ public class MenuController {
     @Resource
     private DictMapper dictMapper;
 
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedisClearCache redisClearCache;
+
     //新增或者更新
     @PostMapping
     public Result save(@RequestBody Menu menu){
-        return Result.success(menuService.saveOrUpdate(menu));
+
+        menuService.saveOrUpdate(menu);
+        redisClearCache.flushRedis(Constants.MENU_KEY);     //执行完增删改操作后，需删除Redis里面的缓存
+        return Result.success();
     }
 
 
     //删除
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) {
-        return Result.success(menuService.removeById(id));
+
+        menuService.removeById(id);
+        redisClearCache.flushRedis(Constants.MENU_KEY);     //执行完增删改操作后，需删除Redis里面的缓存
+        return Result.success();
     }
 
     //批量删除所选数据
     @PostMapping("/del/batch")
     public Result deleteBatch(@RequestBody List<Integer> ids){
-        return Result.success(menuService.removeByIds(ids));
+
+        menuService.removeByIds(ids);
+        redisClearCache.flushRedis(Constants.MENU_KEY);     //执行完增删改操作后，需删除Redis里面的缓存
+        return Result.success();
     }
 
     @GetMapping("/ids")
@@ -61,9 +81,28 @@ public class MenuController {
     }
 
     //查询所有
+    //实现redis缓存
     @GetMapping
     public Result findAll(@RequestParam(defaultValue = "") String name) {
-        return Result.success(menuService.findMenus(name));
+
+        /**
+         * redis减轻数据库压力
+         */
+        //1.从缓存获取数据
+        String jsonStr = stringRedisTemplate.opsForValue().get(Constants.MENU_KEY);
+        List<Menu> menus;
+        if(StrUtil.isBlank(jsonStr)){   //2.取出来的json是空的
+            menus = menuService.findMenus(name);//3.从数据库取出数据
+//4.在去缓存到redis
+            stringRedisTemplate.opsForValue().set(Constants.MENU_KEY,JSONUtil.toJsonPrettyStr(menus));
+        }else{
+            //5.如果有，从redis缓存中获取数据
+            menus = JSONUtil.toBean(jsonStr, new TypeReference<List<Menu>>() {
+            }, true);
+        }
+
+        return Result.success(menus);
+//        return Result.success(menuService.findMenus(name));
     }
 
     //根据ID查询

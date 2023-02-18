@@ -4,14 +4,23 @@ package com.example.sboot.controller;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.date.Quarter;
+import cn.hutool.core.lang.TypeReference;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.sboot.common.Constants;
+import com.example.sboot.common.RedisClearCache;
 import com.example.sboot.common.Result;
 import com.example.sboot.entity.Assets;
 import com.example.sboot.entity.Files;
+import com.example.sboot.entity.Role;
 import com.example.sboot.entity.User;
 import com.example.sboot.service.IAssetsService;
 import com.example.sboot.service.IFileService;
 import com.example.sboot.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +49,14 @@ public class EchartsController {
 
     @Resource
     private IAssetsService assetsService;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedisClearCache redisClearCache;
+
+
 
     //柱状图
     @GetMapping("/example")
@@ -71,6 +88,8 @@ public class EchartsController {
                 default:break;
             }
         }
+
+
 
         return Result.success(CollUtil.newArrayList(q1,q2,q3,q4));
     }
@@ -142,6 +161,7 @@ public class EchartsController {
 
         return Result.success(q1);
     }
+
 
     //查询并显示文件总数
     @GetMapping("/fileOnline")

@@ -1,18 +1,23 @@
 package com.example.sboot.controller;
 
 import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.lang.TypeReference;
 import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
+import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.sboot.common.Constants;
+import com.example.sboot.common.RedisClearCache;
 import com.example.sboot.common.Result;
 import com.example.sboot.entity.Files;
 import com.example.sboot.entity.User;
 import com.example.sboot.mapper.FileMapper;
 import com.example.sboot.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,6 +43,12 @@ public class FileController {
 
     @Resource
     private FileMapper fileMapper;
+
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private RedisClearCache redisClearCache;
 
 
     /**
@@ -109,6 +120,8 @@ public class FileController {
         saveFile.setMd5(md5);
         fileMapper.insert(saveFile);
 
+//        redisClearCache.flushRedis(Constants.FILES_KEY);
+
         return url;
 
     }
@@ -157,6 +170,7 @@ public class FileController {
         Files files = fileMapper.selectById(id);
         files.setIsDelete(true);
         fileMapper.updateById(files);
+//        redisClearCache.flushRedis(Constants.FILES_KEY);
         return Result.success();
     }
 
@@ -173,6 +187,7 @@ public class FileController {
             fileMapper.updateById(file);
         }
 
+//        redisClearCache.flushRedis(Constants.FILES_KEY);
         return Result.success();
     }
 
@@ -180,7 +195,9 @@ public class FileController {
     //更新
     @PostMapping("/update")
     public Result save(@RequestBody Files files){
-        return Result.success(fileMapper.updateById(files));
+        fileMapper.updateById(files);
+//        redisClearCache.flushRedis(Constants.FILES_KEY);
+        return Result.success();
     }
 
 
@@ -209,7 +226,25 @@ public class FileController {
             queryWrapper.like("name",name);
         }
 
-        return Result.success(fileMapper.selectPage(new Page<>(pageNum, pageSize),queryWrapper));
+        /**
+         * redis减轻数据库压力
+         */
+        //1.从缓存获取数据
+//        String jsonStr = stringRedisTemplate.opsForValue().get(Constants.FILES_KEY);
+//        Page<Files> filesPage;
+//        if(StrUtil.isBlank(jsonStr)){   //2.取出来的json是空的
+//            filesPage = fileMapper.selectPage(new Page<>(pageNum, pageSize), queryWrapper);     //3.从数据库取出数据
+//            //4.在去缓存到redis
+//            stringRedisTemplate.opsForValue().set(Constants.FILES_KEY,JSONUtil.toJsonPrettyStr(filesPage));
+//        }else{
+//            //5.如果有，从redis缓存中获取数据
+//            filesPage = JSONUtil.toBean(jsonStr, new TypeReference<Page<Files>>() {
+//            }, true);
+//        }
+//        return Result.success(filesPage);
+        return Result.success(fileMapper.selectPage(new Page<>(pageNum, pageSize), queryWrapper));
     }
+
+
 
 }
