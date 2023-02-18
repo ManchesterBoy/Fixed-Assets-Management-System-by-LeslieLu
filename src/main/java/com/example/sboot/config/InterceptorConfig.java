@@ -20,7 +20,7 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")     //拦截所有请求，通过判断token是否合法来决定是否需要登录
                 //防止用户直接跳过登录访问到对应的数据
 //                .excludePathPatterns("/user/login","/user/register","/**/export","/**/import","/file/**");
-                .excludePathPatterns("/user/login","/user/register","/**/export","/**/import","/file/**");
+                .excludePathPatterns("/user/login","/user/register","/**/export","/**/import","/file/{fileUUid}");
     }
 
     @Bean
