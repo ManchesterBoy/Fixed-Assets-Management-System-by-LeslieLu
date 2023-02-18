@@ -100,6 +100,10 @@
       </el-backtop>
     </template>
 
+<!--    日历-->
+    <el-calendar v-model="value">
+    </el-calendar>
+
 
   </div>
 
@@ -117,11 +121,12 @@ export default {
     return{
       // userOnline: '',
       // fileOnline: '',
-      purchaseOnline: '',
-      acceptOnline: '',
-      allocationOnline: '',
-      managementOnline: '',
-      finalOnline: '',
+      purchaseOnline: '', //显示处于购置管理的人数
+      acceptOnline: '',   //显示处于验收管理的人数
+      allocationOnline: '',   //显示处于调拨管理的人数
+      managementOnline: '',   //显示处于处置管理的人数
+      finalOnline: '',    //显示处于事件结束的人数
+      value: new Date(),
     }
   },
   created() {

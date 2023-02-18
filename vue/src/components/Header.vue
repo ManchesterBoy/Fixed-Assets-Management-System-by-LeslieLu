@@ -77,7 +77,7 @@ export default {
 <style scoped>
 .router-link-active {
   text-decoration: none;
-  color: blue;
+  color: #409EFF;
 }
 a{
   text-decoration: none;

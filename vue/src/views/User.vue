@@ -5,7 +5,7 @@
 
       <!--          搜索与其它功能按钮-->
       <div style="padding: 10px 0">
-        <el-input style="width: 200px" placeholder="请输入名称" suffix-icon="el-icon-search" class="ml-5" v-model="username"></el-input>
+        <el-input style="width: 200px" placeholder="请输入用户名" suffix-icon="el-icon-search" class="ml-5" v-model="username"></el-input>
         <el-input style="width: 200px" placeholder="请输入邮箱" suffix-icon="el-icon-share" class="ml-5" v-model="email"></el-input>
         <el-input style="width: 200px" placeholder="请输入地址" suffix-icon="el-icon-position" class="ml-5" v-model="address"address></el-input>
         <el-button class="ml-5" type="primary" @click="load" >搜索</el-button>
@@ -44,7 +44,7 @@
       </div>
 
       <!--          表单主体-->
-      <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">>
+      <el-table  :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">>
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="id" label="ID" width="80"></el-table-column>
         <el-table-column prop="username" label="用户名" width="140"></el-table-column>
