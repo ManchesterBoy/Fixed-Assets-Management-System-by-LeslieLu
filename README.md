@@ -10,14 +10,14 @@ Vue+Springboot 管理系统
 ###### 配置参考
 
 后端端口号为:http://localhost:9090
-前端端口号为:http://localhost:8080
+前端端口号为:http://localhost:8081
 
 ###### 此项目为前后端分离项目
 
 如需要修改后端端口号需在application.yml中的server: port: 自行修改
 如若修改了后端端口号，请在对应前端页面中将9090改为你所修改的端口号(Person、User、Menu、File、Purchase、Accept、Allocation、Management、Account)
 
-同时若前端端口不为8080，则需在config包的CorsConfig中的跨域方案进行调整
+同时若前端端口不为8081，则需在config包的CorsConfig中的跨域方案进行调整
 
 数据库密码修改在 application.yml 中，数据库名称为leslielu，数据都在leslielu.sql中
 同时还需在  application.yml 修改files: upload: paths: 为你项目所在目录\files\；这是你上传文件或者上传头像所要保存的文件夹
@@ -30,7 +30,7 @@ Vue+Springboot 管理系统
 前端运行需通过终端进入到vue的文件中使用命令:npm run serve （需要有node.js情况下才能启动）
 后端运行通过启动 SbootApplication 即可
 
-登录页面为http://localhost:8080/login
+登录页面为http://localhost:8081/login
 帐号:admin    密码:admin
 
 # 功能说明
