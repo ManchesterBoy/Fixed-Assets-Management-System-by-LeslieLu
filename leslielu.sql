@@ -11,10 +11,10 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 17/02/2023 21:20:17
+ Date: 20/02/2023 09:51:58
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
@@ -23,14 +23,14 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `course`;
 CREATE TABLE `course`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '课程名称',
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '课程名称',
   `score` int NULL DEFAULT NULL COMMENT '学分',
-  `times` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '上课时间',
+  `times` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '上课时间',
   `state` tinyint(1) NULL DEFAULT NULL COMMENT '是否开课',
   `teacher_id` int NULL DEFAULT NULL COMMENT '授课老师id',
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0为未删除 1为已删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course
@@ -48,7 +48,7 @@ CREATE TABLE `student_course`  (
   `student_id` int NOT NULL,
   `course_id` int NOT NULL,
   PRIMARY KEY (`student_id`, `course_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of student_course
@@ -70,7 +70,7 @@ CREATE TABLE `sys_account`  (
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '事件处理完毕的时间',
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0为未删除 1为已删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_account
@@ -83,8 +83,8 @@ INSERT INTO `sys_account` VALUES (1, 1, 2, NULL, '2023-02-17 10:47:42', 0);
 DROP TABLE IF EXISTS `sys_assets`;
 CREATE TABLE `sys_assets`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '名称',
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '具体内容',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '具体内容',
   `purchase` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '购置流程 0为未审批 1为待审批 2为已审批',
   `accept` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '验收流程 0为未审批 1为待审批 2为已审批',
   `allocation` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '调拨流程 0为未审批 1为待审批 2为已审批',
@@ -98,7 +98,7 @@ CREATE TABLE `sys_assets`  (
   `admin3` int NULL DEFAULT NULL COMMENT '调拨审批人的id',
   `admin4` int NULL DEFAULT NULL COMMENT '处置审批人的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_assets
@@ -108,7 +108,7 @@ INSERT INTO `sys_assets` VALUES (2, '购置请求', '购买一台平板', 2, 1, 
 INSERT INTO `sys_assets` VALUES (3, '申请', '需要两颗螺丝钉', 2, 2, 2, 1, 0, 2, 3000, '2023-02-16 16:38:15', 2, 3, 21, 21);
 INSERT INTO `sys_assets` VALUES (4, '申请', '买一台等离子电视', 2, 2, 2, 2, 0, 12, 400, '2023-02-16 16:38:15', 2, 3, 2, 21);
 INSERT INTO `sys_assets` VALUES (5, '111', '111', 1, 0, 0, 0, 0, 12, 5000, '2023-02-16 16:39:11', NULL, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (6, '请求', '想要买3060ti', 1, 0, 0, 0, 0, 13, 5000, '2023-02-16 17:00:21', NULL, NULL, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (6, '请求', '想要买3060ti', 2, 1, 0, 0, 0, 13, 5000, '2023-02-16 17:00:21', 2, NULL, NULL, NULL);
 INSERT INTO `sys_assets` VALUES (7, '11', '11', 2, 1, 0, 0, 0, 2, 7000, '2023-02-16 17:08:36', 20, NULL, NULL, NULL);
 INSERT INTO `sys_assets` VALUES (8, '123', '123', 2, 1, 0, 0, 0, 2, 1000, '2023-02-16 17:22:49', 21, NULL, NULL, NULL);
 INSERT INTO `sys_assets` VALUES (9, '5678', '5678', 2, 2, 1, 0, 0, 4, 6650, '2023-02-16 17:30:22', 21, 3, NULL, NULL);
@@ -118,10 +118,10 @@ INSERT INTO `sys_assets` VALUES (9, '5678', '5678', 2, 2, 1, 0, 0, 4, 6650, '202
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_dict`;
 CREATE TABLE `sys_dict`  (
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '名称',
-  `value` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '内容',
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '类型'
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '内容',
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型'
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict
@@ -151,20 +151,20 @@ INSERT INTO `sys_dict` VALUES ('baseball', 'el-icon-baseball', 'icon');
 DROP TABLE IF EXISTS `sys_file`;
 CREATE TABLE `sys_file`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件名称',
-  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件类型',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件名称',
+  `type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件类型',
   `size` bigint NULL DEFAULT NULL COMMENT '文件大小（KB）',
-  `url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '下载链接',
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '下载链接',
   `is_delete` tinyint(1) NULL DEFAULT 0 COMMENT '假删除 1为“已删除” 0为“未删除”',
   `enable` tinyint(1) NULL DEFAULT 1 COMMENT '是否禁用链接 1“可用”  0“不可用”',
-  `md5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件md5',
+  `md5` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '文件md5',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 71 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_file
 -- ----------------------------
-INSERT INTO `sys_file` VALUES (10, 'angel.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 1, 'c56c9dd1104eec2ad6a643629b48b350');
+INSERT INTO `sys_file` VALUES (10, 'angel.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 1, 1, 'c56c9dd1104eec2ad6a643629b48b350');
 INSERT INTO `sys_file` VALUES (11, '675573ec00224d90aca5c58536bd3cb5.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 0, 'c56c9dd1104eec2ad6a643629b48b350');
 INSERT INTO `sys_file` VALUES (12, '28D56B4E1EA46D615B000C36C56ACEE9.jpg', 'jpg', 67, 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 0, '28d56b4e1ea46d615b000c36c56acee9');
 INSERT INTO `sys_file` VALUES (13, '19109031039 陆宇鹏 固定资产管理系统的设计与实现 毕业论文(设计) 开题报告.doc', 'doc', 141, 'http://localhost:9090/file/8b3459afc5434b57a0128c19f531a6d2.doc', 0, 0, '4ef1c22297e20afc618204b0461c5698');
@@ -225,7 +225,7 @@ INSERT INTO `sys_file` VALUES (67, '花.jpg', 'jpg', 72, 'http://localhost:9090/
 INSERT INTO `sys_file` VALUES (68, '753.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
 INSERT INTO `sys_file` VALUES (69, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
 INSERT INTO `sys_file` VALUES (70, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
-INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
+INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 0, '0eeaf58f81aa96b0f1a7dc541abd083b');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -233,20 +233,20 @@ INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9
 DROP TABLE IF EXISTS `sys_menu`;
 CREATE TABLE `sys_menu`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '名称',
-  `path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '路径',
-  `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '图标',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '描述',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '路径',
+  `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0为未删除 1为已删除',
   `pid` int NULL DEFAULT NULL COMMENT '父级id',
-  `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '页面路径',
+  `page_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '页面路径',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES (1, '主页', '/home', 'el-icon-house', '主页', 0, NULL, 'Home');
+INSERT INTO `sys_menu` VALUES (1, '主页', '/home', 'el-icon-house', '主页3', 0, NULL, 'Home');
 INSERT INTO `sys_menu` VALUES (2, '123', '123', '123', '123', 1, 1, NULL);
 INSERT INTO `sys_menu` VALUES (3, '234', '234', '234', '234', 1, 1, NULL);
 INSERT INTO `sys_menu` VALUES (4, '系统管理', '', 'el-icon-s-grid', '系统管理', 0, NULL, NULL);
@@ -276,17 +276,17 @@ INSERT INTO `sys_menu` VALUES (23, '台帐管理', '/account', 'el-icon-s-flag',
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '名称',
-  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '描述',
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `deleted` int(10) UNSIGNED ZEROFILL NULL DEFAULT 0000000000 COMMENT '逻辑删除 0为未删除 1为已删除',
-  `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '唯一标识',
+  `flag` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '唯一标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, '管理员', '管理员', 0000000000, 'ROLE_ADMIN');
+INSERT INTO `sys_role` VALUES (1, '管理员', '管理员1', 0000000000, 'ROLE_ADMIN');
 INSERT INTO `sys_role` VALUES (2, '普通用户', '普通用户', 0000000000, 'ROLE_USER');
 INSERT INTO `sys_role` VALUES (4, '111', '111', 0000000001, '111');
 INSERT INTO `sys_role` VALUES (5, '111', '111', 0000000001, '111');
@@ -301,7 +301,7 @@ CREATE TABLE `sys_role_menu`  (
   `role_id` int NOT NULL COMMENT '角色id',
   `menu_id` int NOT NULL COMMENT '菜单id',
   PRIMARY KEY (`role_id`, `menu_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '角色菜单关系表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色菜单关系表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role_menu
@@ -336,18 +336,18 @@ INSERT INTO `sys_role_menu` VALUES (6, 17);
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT 'ID\r\n',
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '用户名',
-  `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '密码',
-  `nickname` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '昵称',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `phone` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '电话',
-  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '地址',
+  `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
+  `password` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
+  `nickname` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '昵称',
+  `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
   `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `avatar_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '头像',
+  `avatar_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像',
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0未删除 1已删除',
-  `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '角色',
+  `role` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
