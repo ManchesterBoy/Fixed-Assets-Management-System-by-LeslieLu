@@ -50,9 +50,12 @@ public class SwaggerConfig {
     private ApiInfo apiInfo(String title, String version) {
         return new ApiInfoBuilder()
                 .title(title)
-                .description("更多请关注: https://blog.csdn.net/xqnode")
-                .termsOfServiceUrl("https://blog.csdn.net/xqnode")
-                .contact(new Contact("xqnode", "https://blog.csdn.net/xqnode", "xiaqingweb@163.com"))
+//                .description("更多请关注: https://blog.csdn.net/xqnode")
+                .description("这是Swagger-UI测试相关接口界面")
+//                .termsOfServiceUrl("https://blog.csdn.net/xqnode")
+                .termsOfServiceUrl("https://github.com/ManchesterBoy/Fixed-Assets-Management-System-by-LeslieLu.git")
+//                .contact(new Contact("xqnode", "https://blog.csdn.net/xqnode", "xiaqingweb@163.com"))
+                .contact(new Contact("LeslieLu", "https://github.com/ManchesterBoy/Fixed-Assets-Management-System-by-LeslieLu.git", "leslielu21@163.com"))
                 .version(version)
                 .build();
     }
