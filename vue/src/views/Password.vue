@@ -7,10 +7,10 @@
         <el-form-item label="原密码" prop="password" >
           <el-input v-model="form.password" autocomplete="off" show-password></el-input>
         </el-form-item>
-        <el-form-item label="新密码" >
+        <el-form-item label="新密码" prop="newPassword" >
           <el-input v-model="form.newPassword" autocomplete="off" show-password></el-input>
         </el-form-item>
-        <el-form-item label="确认新密码" >
+        <el-form-item label="确认新密码" prop="confirmPassword" >
           <el-input v-model="form.confirmPassword" autocomplete="off" show-password></el-input>
         </el-form-item>
         <el-form-item>
