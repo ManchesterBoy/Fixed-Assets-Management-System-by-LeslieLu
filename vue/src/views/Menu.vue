@@ -4,11 +4,11 @@
 
 
       <!--          搜索与其它功能按钮-->
-      <div style="padding: 10px 0">
-        <el-input style="width: 200px" placeholder="请输入名称" suffix-icon="el-icon-search" class="ml-5" v-model="name"></el-input>
-        <el-button class="ml-5" type="primary" @click="load" >搜索</el-button>
-        <el-button class="ml-5" type="warning" @click="reset" >重置</el-button>
-      </div>
+<!--      <div style="padding: 10px 0">-->
+<!--        <el-input style="width: 200px" placeholder="请输入名称" suffix-icon="el-icon-search" class="ml-5" v-model="name"></el-input>-->
+<!--        <el-button class="ml-5" type="primary" @click="load" >搜索</el-button>-->
+<!--        <el-button class="ml-5" type="warning" @click="reset" >重置</el-button>-->
+<!--      </div>-->
 
       <div style="margin: 10px 0">
         <el-button class="ml-5" type="primary" @click="handleAdds" >新增<i class="el-icon-circle-plus-outline"></i></el-button>
