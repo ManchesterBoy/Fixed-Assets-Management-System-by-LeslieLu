@@ -43,7 +43,7 @@ public class User implements Serializable {
       /**
      * 密码
      */
-      @JsonIgnore   //隐藏密码
+//      @JsonIgnore   //隐藏密码
       private String password;
 
       /**

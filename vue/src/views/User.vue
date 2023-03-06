@@ -100,12 +100,49 @@
         </el-pagination>
       </div>
 
+      <!--          新增时的表单-->
+      <el-dialog title="用户信息" :visible.sync="dialogFormVisibles" width="30%" >
+        <el-form label-width="80px" size="mid" :model="forms" :rules="rules" ref="pass">
+          <el-form-item label="用户名" prop="username">
+            <el-input v-model="forms.username" autocomplete="off" placeholder="请输入用户名"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password"  >
+            <el-input v-model="forms.password" autocomplete="off" placeholder="请输入密码"></el-input>
+          </el-form-item>
+          <el-form-item label="角色" prop="role" >
+            <el-select clearable v-model="forms.role" placeholder="请选择角色" style= "width: 100%">
+              <el-option v-for="item in roles"  :key="item.name" :label="item.name" :value="item.flag" />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="昵称" prop="nickname">
+            <el-input v-model="forms.nickname" autocomplete="off" placeholder="请输入昵称"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱" prop="email">
+            <el-input v-model="forms.email" autocomplete="off" placeholder="请输入邮箱"></el-input>
+          </el-form-item>
+          <el-form-item label="电话" prop="phone">
+            <el-input v-model="forms.phone" autocomplete="off" placeholder="请输入电话"></el-input>
+          </el-form-item>
+          <el-form-item label="地址" prop="address" >
+            <el-input v-model="forms.address" autocomplete="off" placeholder="请输入地址"></el-input>
+          </el-form-item>
+
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button @click="dialogFormVisibles = false">取 消</el-button>
+          <el-button type="primary" @click="saves">确 定</el-button>
+        </div>
+      </el-dialog>
+
       <!--          编辑时的表单-->
       <el-dialog title="用户信息" :visible.sync="dialogFormVisible" width="30%" >
         <el-form label-width="80px" size="mid" :model="form" :rules="rules" ref="pass">
           <el-form-item label="用户名" prop="username">
             <el-input v-model="form.username" autocomplete="off" placeholder="请输入用户名"></el-input>
           </el-form-item>
+<!--          <el-form-item label="密码" prop="password"  >-->
+<!--            <el-input v-model="form.password" autocomplete="off" placeholder="请输入密码"></el-input>-->
+<!--          </el-form-item>-->
           <el-form-item label="角色" prop="role" >
             <el-select clearable v-model="form.role" placeholder="请选择角色" style= "width: 100%">
               <el-option v-for="item in roles"  :key="item.name" :label="item.name" :value="item.flag" />
@@ -187,7 +224,17 @@ export default {
       email: "",      //邮箱
       address: "",    //地址
       dialogFormVisible: false,   //编辑时的表单
+      dialogFormVisibles: false,   //新增时的表单
       multipleSelection: [],      //批量选择
+      forms: {
+        username:'',
+        password:'',
+        role:'',
+        nickname:'',
+        email:'',
+        phone:'',
+        address:'',
+      },                   //点击新增时，将原有数据送至编辑表单的初始化
       form: {
         username:'',
         role:'',
@@ -204,6 +251,10 @@ export default {
       rules:{
         username:[
           { required: true, message: '请输入用户名', trigger: 'change' },
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' }
         ],
         role:[
           {required: true, message: '请选择角色', trigger: 'change'},
@@ -255,8 +306,8 @@ export default {
 
     },
     handleAdd(){  //点击添加功能时弹出表单并清除上一次表单的信息
-      this.dialogFormVisible = true
-      this.form = {}
+      this.dialogFormVisibles = true
+      this.forms = {}
 
     },
     handleEdit(row){  //点击编辑功能时弹出表单并渲染所选的信息到表单
@@ -292,6 +343,24 @@ export default {
           this.$message.error("删除失败")
         }
       })
+    },
+    saves(){ //新增完成时的保存功能
+
+      this.$refs.pass.validate((valid) => {
+        if (valid) {  //合法
+          this.request.post("/user",this.forms).then(res => {
+            if(res.code === '200'){
+              this.$message.success("保存成功")
+              this.dialogFormVisibles = false
+              this.load()
+            }
+            else{
+              this.$message.error("保存失败")
+            }
+          })
+        }
+      })
+
     },
     save(){ //编辑完成时的保存功能
 

@@ -2,7 +2,7 @@
   <div>
 <!--    <h1>修改密码</h1>-->
     <el-card style="width: 500px;padding: 20px;margin: auto">
-      <el-form label-width="90px" size="mid" :model="form" :rules="rules" ref="pass">
+      <el-form label-width="100px" size="mid" :model="form" :rules="rules" ref="pass">
 
         <el-form-item label="原密码" prop="password" >
           <el-input v-model="form.password" autocomplete="off" show-password></el-input>
