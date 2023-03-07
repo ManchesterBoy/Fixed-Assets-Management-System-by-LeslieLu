@@ -17,7 +17,7 @@
 
     <div style="height: 60px;line-height: 80px;text-align: center">
       <!--            标识图片-->
-      <img src="../assets/angel.jpg" alt="" style="width: 20px;position: relative;top: 5px;margin-right: 5px">
+      <img src="../assets/ManUnited.jpg" alt="" style="width: 20px;position: relative;top: 5px;margin-right: 5px">
       <b style="color: #ccc " v-show="logoTextShow">固定资产管理系统</b>
     </div>
 

@@ -61,7 +61,8 @@ public class UserController {
     public Result register(@RequestBody UserDTO userDTO){
         String username = userDTO.getUsername();
         String password = userDTO.getPassword();
-        if(StrUtil.isBlank(username) || StrUtil.isBlank(password)){
+        String role = userDTO.getRole();
+        if(StrUtil.isBlank(username) || StrUtil.isBlank(password)  || StrUtil.isBlank(role)){
             return Result.error(Constants.CODE_400,"参数错误");
         }
         return Result.success(userService.register(userDTO));
