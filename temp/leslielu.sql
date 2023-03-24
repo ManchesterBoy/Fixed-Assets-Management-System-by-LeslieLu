@@ -11,7 +11,7 @@
  Target Server Version : 80027
  File Encoding         : 65001
 
- Date: 17/02/2023 21:20:17
+ Date: 24/03/2023 16:51:17
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `course`  (
   `teacher_id` int NULL DEFAULT NULL COMMENT '授课老师id',
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0为未删除 1为已删除',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '此表已无用' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of course
@@ -97,21 +97,26 @@ CREATE TABLE `sys_assets`  (
   `admin2` int NULL DEFAULT NULL COMMENT '验收审批人的id',
   `admin3` int NULL DEFAULT NULL COMMENT '调拨审批人的id',
   `admin4` int NULL DEFAULT NULL COMMENT '处置审批人的id',
+  `quantity` int NULL DEFAULT NULL COMMENT '数量',
+  `supplier` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '供应商',
+  `manufacturer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '生产商',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of sys_assets
 -- ----------------------------
-INSERT INTO `sys_assets` VALUES (1, '购置申请', '购买电脑一台', 2, 2, 2, 2, 0, 13, 1000, '2023-12-16 16:38:15', 2, 20, 21, 3);
-INSERT INTO `sys_assets` VALUES (2, '购置请求', '购买一台平板', 2, 1, 0, 0, 0, 2, 2000, '2023-02-16 16:38:15', 21, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (3, '申请', '需要两颗螺丝钉', 2, 2, 2, 1, 0, 2, 3000, '2023-02-16 16:38:15', 2, 3, 21, 21);
-INSERT INTO `sys_assets` VALUES (4, '申请', '买一台等离子电视', 2, 2, 2, 2, 0, 12, 400, '2023-02-16 16:38:15', 2, 3, 2, 21);
-INSERT INTO `sys_assets` VALUES (5, '111', '111', 1, 0, 0, 0, 0, 12, 5000, '2023-02-16 16:39:11', NULL, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (6, '请求', '想要买3060ti', 1, 0, 0, 0, 0, 13, 5000, '2023-02-16 17:00:21', NULL, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (7, '11', '11', 2, 1, 0, 0, 0, 2, 7000, '2023-02-16 17:08:36', 20, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (8, '123', '123', 2, 1, 0, 0, 0, 2, 1000, '2023-02-16 17:22:49', 21, NULL, NULL, NULL);
-INSERT INTO `sys_assets` VALUES (9, '5678', '5678', 2, 2, 1, 0, 0, 4, 6650, '2023-02-16 17:30:22', 21, 3, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (1, '购置申请', '购买电脑三台', 2, 2, 2, 2, 0, 13, 1000, '2023-12-16 16:38:15', 2, 20, 21, 3, 3, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (2, '购置请求', '购买一台平板', 2, 1, 0, 0, 0, 2, 2000, '2023-02-16 16:38:15', 21, NULL, NULL, NULL, 5, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (3, '申请', '需要两颗螺丝钉', 2, 2, 2, 1, 0, 2, 3000, '2023-02-16 16:38:15', 2, 3, 21, 21, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (4, '申请', '买两台等离子电视', 2, 2, 2, 2, 0, 12, 400, '2023-02-16 16:38:15', 2, 3, 2, 21, 2, '京海电视', '启盛集团');
+INSERT INTO `sys_assets` VALUES (5, '111', '111', 1, 0, 0, 0, 0, 12, 5000, '2023-02-16 16:39:11', NULL, NULL, NULL, NULL, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (6, '请求', '想要买3060ti', 2, 1, 0, 0, 0, 13, 5000, '2023-02-16 17:00:21', 2, NULL, NULL, NULL, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (7, '11', '11', 2, 1, 0, 0, 0, 2, 7000, '2023-02-16 17:08:36', 20, NULL, NULL, NULL, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (8, '123', '123', 2, 1, 0, 0, 0, 2, 1000, '2023-02-16 17:22:49', 21, NULL, NULL, NULL, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (9, '5678', '5678', 2, 2, 1, 0, 0, 4, 6650, '2023-02-16 17:30:22', 21, 3, NULL, NULL, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (10, '申请', '请求购买一台电脑', 2, 2, 2, 2, 1, 38, 50000, '2023-03-12 11:39:16', 2, 2, 2, 2, 2, NULL, NULL);
+INSERT INTO `sys_assets` VALUES (11, '购置平板', '为实现数字化办公，需要购置平板电脑数台', 1, 0, 0, 0, 0, 2, 20034, '2023-03-24 15:14:38', NULL, NULL, NULL, NULL, 5, '苹果', '富士康');
 
 -- ----------------------------
 -- Table structure for sys_dict
@@ -159,12 +164,12 @@ CREATE TABLE `sys_file`  (
   `enable` tinyint(1) NULL DEFAULT 1 COMMENT '是否禁用链接 1“可用”  0“不可用”',
   `md5` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '文件md5',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 46 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 78 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_file
 -- ----------------------------
-INSERT INTO `sys_file` VALUES (10, 'angel.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 1, 'c56c9dd1104eec2ad6a643629b48b350');
+INSERT INTO `sys_file` VALUES (10, 'angel.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 1, 1, 'c56c9dd1104eec2ad6a643629b48b350');
 INSERT INTO `sys_file` VALUES (11, '675573ec00224d90aca5c58536bd3cb5.jpg', 'jpg', 399, 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 0, 'c56c9dd1104eec2ad6a643629b48b350');
 INSERT INTO `sys_file` VALUES (12, '28D56B4E1EA46D615B000C36C56ACEE9.jpg', 'jpg', 67, 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 0, '28d56b4e1ea46d615b000c36c56acee9');
 INSERT INTO `sys_file` VALUES (13, '19109031039 陆宇鹏 固定资产管理系统的设计与实现 毕业论文(设计) 开题报告.doc', 'doc', 141, 'http://localhost:9090/file/8b3459afc5434b57a0128c19f531a6d2.doc', 0, 0, '4ef1c22297e20afc618204b0461c5698');
@@ -225,7 +230,14 @@ INSERT INTO `sys_file` VALUES (67, '花.jpg', 'jpg', 72, 'http://localhost:9090/
 INSERT INTO `sys_file` VALUES (68, '753.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
 INSERT INTO `sys_file` VALUES (69, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
 INSERT INTO `sys_file` VALUES (70, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
-INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 1, '0eeaf58f81aa96b0f1a7dc541abd083b');
+INSERT INTO `sys_file` VALUES (71, '玉子.jpg', 'jpg', 129, 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 0, '0eeaf58f81aa96b0f1a7dc541abd083b');
+INSERT INTO `sys_file` VALUES (72, '3833db42291e14ded9784dc039ea791.jpg', 'jpg', 243, 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 1, '9718f73b6dbdb30d9cbec96254890efc');
+INSERT INTO `sys_file` VALUES (73, '3833db42291e14ded9784dc039ea791.jpg', 'jpg', 243, 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 1, '9718f73b6dbdb30d9cbec96254890efc');
+INSERT INTO `sys_file` VALUES (74, '25aebde0e243257772b3efce9f8418f.jpg', 'jpg', 54, 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 1, 1, 'ecf2b1886f72bcc7c0d55cee7bcf1740');
+INSERT INTO `sys_file` VALUES (75, '123.jpg', 'jpg', 124, 'http://localhost:9090/file/02e0d7945b3047d996621ca16d0e00fd.jpg', 1, 0, '7007adf2b9a38a8054461bccdf3d0438');
+INSERT INTO `sys_file` VALUES (76, '123.jpg', 'jpg', 124, 'http://localhost:9090/file/02e0d7945b3047d996621ca16d0e00fd.jpg', 1, 1, '7007adf2b9a38a8054461bccdf3d0438');
+INSERT INTO `sys_file` VALUES (77, '28D56B4E1EA46D615B000C36C56ACEE9.jpg', 'jpg', 67, 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 1, 1, '28d56b4e1ea46d615b000c36c56acee9');
+INSERT INTO `sys_file` VALUES (78, '3833db42291e14ded9784dc039ea791.jpg', 'jpg', 243, 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 1, '9718f73b6dbdb30d9cbec96254890efc');
 
 -- ----------------------------
 -- Table structure for sys_menu
@@ -241,7 +253,7 @@ CREATE TABLE `sys_menu`  (
   `pid` int NULL DEFAULT NULL COMMENT '父级id',
   `page_path` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '页面路径',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 24 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 23 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_menu
@@ -281,13 +293,13 @@ CREATE TABLE `sys_role`  (
   `deleted` int(10) UNSIGNED ZEROFILL NULL DEFAULT 0000000000 COMMENT '逻辑删除 0为未删除 1为已删除',
   `flag` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '唯一标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES (1, '管理员', '管理员', 0000000000, 'ROLE_ADMIN');
-INSERT INTO `sys_role` VALUES (2, '普通用户', '普通用户', 0000000000, 'ROLE_USER');
+INSERT INTO `sys_role` VALUES (1, '管理员权限', '管理员', 0000000000, 'ROLE_ADMIN');
+INSERT INTO `sys_role` VALUES (2, '普通用户权限', '普通用户', 0000000000, 'ROLE_USER');
 INSERT INTO `sys_role` VALUES (4, '111', '111', 0000000001, '111');
 INSERT INTO `sys_role` VALUES (5, '111', '111', 0000000001, '111');
 INSERT INTO `sys_role` VALUES (6, '学生', '学生', 0000000001, 'ROLE_STUDENT');
@@ -347,27 +359,39 @@ CREATE TABLE `sys_user`  (
   `deleted` int(1) UNSIGNED ZEROFILL NULL DEFAULT 0 COMMENT '逻辑删除 0未删除 1已删除',
   `role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '角色',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 39 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 INSERT INTO `sys_user` VALUES (2, 'admin', 'admin', '管理员', 'admin@qq.com', '12345678901', '广东肇庆', '2023-01-26 16:36:41', 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 'ROLE_ADMIN');
 INSERT INTO `sys_user` VALUES (3, '牛子哥', '123', '玉子', '258@qq.com', '12378945688', '广东普宁', '2023-12-26 17:17:01', 'http://localhost:9090/file/ff3eb7e3448149398a17bb01f01c06dd.jpg', 0, 'ROLE_ADMIN');
-INSERT INTO `sys_user` VALUES (4, 'asd', '111', 'asd', 'asd@qq.com', '12345', '广东汕头', '2023-01-28 15:24:18', 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (9, '555', '111', '555', NULL, NULL, '广东梅州', '2023-07-28 15:16:25', 'https://img0.baidu.com/it/u=49549001,1235675790&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=562', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (11, 'ert', '111', 'qwe', '147@qq.com', '14893', '广东四会', '2023-08-28 18:32:55', NULL, 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (12, 'qqq', '111', 'QCute', 'qqq@163.com', '999', '广东东莞', '2023-01-28 20:24:06', 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (13, 'qwe', '111', 'qwe好🐮', 'wqe', 'qwe', '上海外滩', '2023-01-28 21:00:46', 'https://ww2.sinaimg.cn/mw690/b21aa384gy1h9tryt3hpjj20nr0qo76y.jpg', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (17, 'aaa', '111', '我是 aaa', 'aaa', 'aaa', '北京四合院', '2023-01-31 02:06:22', 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (19, '258', '111', '258', '258@qq.com', '258', '广东云浮', '2023-01-31 14:21:48', 'http://localhost:9090/file/02e0d7945b3047d996621ca16d0e00fd.jpg', 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (20, '三六九', '369', 'sanliujiu', '369@qq.com', '369', '广东中山', '2023-01-31 14:34:26', 'https://img0.baidu.com/it/u=3723931394,3986721977&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=562', 0, 'ROLE_ADMIN');
+INSERT INTO `sys_user` VALUES (4, 'asd', '111', 'asd', 'asd@qq.com', '18345678901', '广东汕头', '2023-01-28 15:24:18', 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (9, '555', '111', '555', NULL, '18345678905', '广东梅州', '2023-07-28 15:16:25', 'https://img0.baidu.com/it/u=49549001,1235675790&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=562', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (11, 'ert', '111', 'qwe', '147@qq.com', '15378945662', '广东四会', '2023-08-28 18:32:55', NULL, 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (12, 'qqq', '111', 'QCute', 'qqq@163.com', '15378655662', '广东东莞', '2023-01-28 20:24:06', 'http://localhost:9090/file/4b4a0974186148d888302f470ae4250d.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (13, 'qwe', '111', 'qwe好🐮', 'wqe', '15392558932', '上海外滩', '2023-01-28 21:00:46', 'https://ww2.sinaimg.cn/mw690/b21aa384gy1h9tryt3hpjj20nr0qo76y.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (17, 'aaa', '111', '我是 aaa', 'aaa', '15399858932', '北京四合院', '2023-01-31 02:06:22', 'http://localhost:9090/file/b44f35b12738411fa0483170e7089564.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (19, '258', '111', '258', '258@qq.com', '18392482936', '广东云浮', '2023-01-31 14:21:48', 'http://localhost:9090/file/02e0d7945b3047d996621ca16d0e00fd.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (20, '三六九', '369', 'sanliujiu', '369@qq.com', '18392482964', '广东中山', '2023-01-31 14:34:26', 'https://img0.baidu.com/it/u=3723931394,3986721977&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=562', 0, 'ROLE_ADMIN');
 INSERT INTO `sys_user` VALUES (21, '高启强', '111', '强哥', 'gao@163.com', '14725836912', '广东韶关', '2023-01-31 14:46:50', 'http://localhost:9090/file/9b70c1c5f3434c64a8b0318976552043.jpg', 0, 'ROLE_ADMIN');
-INSERT INTO `sys_user` VALUES (22, '三六九', '369', 'sanliujiu', '369@qq.com', '369', '广东中山', '2023-01-31 18:57:13', '369', 1, NULL);
-INSERT INTO `sys_user` VALUES (23, 'sir', '111', NULL, NULL, NULL, '上海外滩', '2023-02-01 15:28:47', NULL, 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (24, 'mandam', NULL, 'mandam', 'mandam@qq.com', '147258', '香港中环', '2023-02-01 16:08:12', NULL, 0, 'ROLE_USER');
-INSERT INTO `sys_user` VALUES (25, '1', NULL, '1', '1', '1', '北京四合院', '2023-02-01 16:09:01', NULL, 1, NULL);
-INSERT INTO `sys_user` VALUES (26, '147', '111', '147', '369@qq.com', '369', '广东中山', '2023-02-01 16:09:54', 'http://localhost:9090/file/83654db1d4ba4d9698cff6f246a9245a.jpeg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (22, '三六九', '369', 'sanliujiu', '369@qq.com', '18392482998', '广东中山', '2023-01-31 18:57:13', '369', 1, NULL);
+INSERT INTO `sys_user` VALUES (23, 'sir', '111', NULL, NULL, '13999292439', '上海外滩', '2023-02-01 15:28:47', NULL, 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (24, 'mandam', '111', 'mandam', 'mandam@qq.com', '13999292346', '香港中环', '2023-02-01 16:08:12', NULL, 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (25, '1', '111', '1', '1', '13914782736', '北京四合院', '2023-02-01 16:09:01', NULL, 1, NULL);
+INSERT INTO `sys_user` VALUES (26, '147', '111', '147', '369@qq.com', '13913482736', '广东中山', '2023-02-01 16:09:54', 'http://localhost:9090/file/83654db1d4ba4d9698cff6f246a9245a.jpeg', 0, 'ROLE_USER');
 INSERT INTO `sys_user` VALUES (27, '789', '789', '789', '369@qq.com', '369', '广西桂林', '2023-02-10 09:22:46', '369', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (28, 'user', 'user', '普通用户', 'user@163.com', '15975364277', '广西南宁', '2023-02-20 18:14:54', 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (29, 'visitor', NULL, '游客', 'visitor@163.com', '15324698521', '香港九龙区', '2023-03-06 09:08:39', NULL, 1, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (30, 'visitor', NULL, '游客', 'visitor@qq.com', '15342698421', '香港深水埗', '2023-03-06 09:20:53', NULL, 1, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (31, 'visitor', NULL, '游客', 'visitor@qq.com', '15342698751', '香港荃湾', '2023-03-06 09:24:16', NULL, 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (32, 'visitors', '123', '游客仔', 'visitors@qq.com', '18325647982', '香港中环', '2023-03-06 09:26:33', NULL, 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (33, '666', '123', NULL, NULL, NULL, NULL, '2023-03-07 09:12:28', NULL, 1, NULL);
+INSERT INTO `sys_user` VALUES (34, '666', '111', NULL, NULL, NULL, NULL, '2023-03-07 09:13:12', NULL, 1, NULL);
+INSERT INTO `sys_user` VALUES (35, '666', '123', NULL, NULL, NULL, NULL, '2023-03-07 09:14:14', NULL, 1, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (36, 'emmm', '111', 'EMM', 'emm@163.com', '13526476259', '澳门氹仔湾', '2023-03-07 09:15:12', 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (37, 'leslie', '111', 'Leslie', 'leslie@163.com', '18319933965', '广东肇庆', '2023-03-12 11:32:06', 'http://localhost:9090/file/2192d459f1304d0cab56516bc68628e3.jpg', 0, 'ROLE_USER');
+INSERT INTO `sys_user` VALUES (38, 'user011', 'user01', 'user011', 'user01@qq.com', '18319933966', '广东广州', '2023-03-12 11:37:26', 'http://localhost:9090/file/02e0d7945b3047d996621ca16d0e00fd.jpg', 0, 'ROLE_ADMIN');
+INSERT INTO `sys_user` VALUES (39, 'user01', 'user', 'user01', 'user01@163.com', '18319933962', '广东广州', '2023-03-12 11:43:42', 'http://localhost:9090/file/ad2828d891a74b7baa47482273e1dba7.jpg', 0, 'ROLE_ADMIN');
 
 SET FOREIGN_KEY_CHECKS = 1;
