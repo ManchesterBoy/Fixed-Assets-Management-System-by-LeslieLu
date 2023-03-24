@@ -43,10 +43,18 @@
       <!--          表单主体-->
       <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">>
         <el-table-column type="selection" width="55"></el-table-column>
-        <el-table-column prop="id" label="ID" width="80"></el-table-column>
-        <el-table-column prop="name" label="事件名称" width="140"></el-table-column>
-        <el-table-column prop="content" label="具体内容" width="300"></el-table-column>
+        <el-table-column prop="id" label="ID" width="40"></el-table-column>
+        <el-table-column prop="name" label="事件名称" ></el-table-column>
+        <el-table-column prop="content" label="具体内容" width="180"></el-table-column>
         <el-table-column prop="price" label="申请金额" ></el-table-column>
+        <el-table-column prop="quantity" label="数量" width="50"></el-table-column>
+        <el-table-column prop="unit_price" label="单价" width="80">
+          <template slot-scope="scope">
+            {{ (scope.row.price / scope.row.quantity).toFixed(2)}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="supplier" label="供应商" ></el-table-column>
+        <el-table-column prop="manufacturer" label="生产商" ></el-table-column>
         <el-table-column prop="purchase" label="购置流程" >
           <template slot-scope="scope">
             <el-tag type="danger" v-if="scope.row.purchase === 0">未处理</el-tag>
@@ -54,12 +62,12 @@
             <el-tag type="success" v-if="scope.row.purchase === 2">已处理</el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="role" label="用户权限" >
-          <template slot-scope="scope">
-            <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>
-            <el-tag type="info" v-if="scope.row.role === 'ROLE_USER'">普通用户</el-tag>
-          </template>
-        </el-table-column>
+<!--        <el-table-column prop="role" label="用户权限" >-->
+<!--          <template slot-scope="scope">-->
+<!--            <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>-->
+<!--            <el-tag type="info" v-if="scope.row.role === 'ROLE_USER'">普通用户</el-tag>-->
+<!--          </template>-->
+<!--        </el-table-column>-->
         <el-table-column prop="submitter" label="提交者" ></el-table-column>
         <el-table-column prop="adminPurchaseName" label="审批" ></el-table-column>
         <el-table-column label="操作" width="300">
@@ -115,6 +123,15 @@
           </el-form-item>
           <el-form-item label="申请金额" prop="price">
             <el-input v-model="form.price" autocomplete="off" placeholder="请输入金额大小"></el-input>
+          </el-form-item>
+          <el-form-item label="数量" prop="quantity">
+            <el-input v-model="form.quantity" autocomplete="off" placeholder="请输入数量大小"></el-input>
+          </el-form-item>
+          <el-form-item label="供应商" prop="supplier">
+            <el-input v-model="form.supplier" autocomplete="off" placeholder="请输入供应商名称"></el-input>
+          </el-form-item>
+          <el-form-item label="生产商" prop="manufacturer">
+            <el-input v-model="form.manufacturer" autocomplete="off" placeholder="请输入生产商名称"></el-input>
           </el-form-item>
           <el-form-item label="提交者" prop="userId">
             <el-select v-model="form.userId"  placeholder="请选择">
@@ -178,6 +195,10 @@ export default {
       dialogFormVisible: false,   //编辑时的表单
       multipleSelection: [],      //批量选择
       price: "",
+      quantity: "",
+      unit_price: "",
+      supplier: "",
+      manufacturer: "",
       form: {
         userId: '',
         purchase: '',
@@ -203,7 +224,17 @@ export default {
         ],
         price:[
           {required: true, message: '请输入金额大小', trigger: 'blur'}
-        ]
+        ],
+        quantity:[
+          {required: true, message: '请输入数量大小', trigger: 'blur'}
+        ],
+        supplier:[
+          {required: true, message: '请输入供应商名称', trigger: 'blur'}
+        ],
+        manufacturer:[
+          {required: true, message: '请输入生产商名称', trigger: 'blur'}
+        ],
+
       },
       // roles: [],
       user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
@@ -235,6 +266,7 @@ export default {
 
       })
 
+      // this.unit_price = 2000 / 4 //计算单价
       this.userRights = this.user.role  //获取当前用户的角色权限
 
       //获取用户的昵称在新增或者修改时填入自己昵称

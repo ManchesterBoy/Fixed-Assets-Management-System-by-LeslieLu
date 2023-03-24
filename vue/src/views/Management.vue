@@ -43,10 +43,18 @@
     <!--          表单主体-->
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">>
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column prop="id" label="ID" width="80"></el-table-column>
-      <el-table-column prop="name" label="事件名称" width="140"></el-table-column>
-      <el-table-column prop="content" label="具体内容" width="300"></el-table-column>
+      <el-table-column prop="id" label="ID" width="40"></el-table-column>
+      <el-table-column prop="name" label="事件名称" ></el-table-column>
+      <el-table-column prop="content" label="具体内容" width="180"></el-table-column>
       <el-table-column prop="price" label="申请金额" ></el-table-column>
+      <el-table-column prop="quantity" label="数量" width="50"></el-table-column>
+      <el-table-column prop="unit_price" label="单价" width="80">
+        <template slot-scope="scope">
+          {{ (scope.row.price / scope.row.quantity).toFixed(2)}}
+        </template>
+      </el-table-column>
+      <el-table-column prop="supplier" label="供应商" ></el-table-column>
+      <el-table-column prop="manufacturer" label="生产商" ></el-table-column>
       <el-table-column prop="management" label="调拨流程" >
         <template slot-scope="scope">
           <el-tag type="danger" v-if="scope.row.management === 0">未处理</el-tag>
@@ -54,12 +62,12 @@
           <el-tag type="success" v-if="scope.row.management === 2">已处理</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="role" label="用户权限" >
-        <template slot-scope="scope">
-          <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>
-          <el-tag type="info" v-if="scope.row.role === 'ROLE_USER'">普通用户</el-tag>
-        </template>
-      </el-table-column>
+<!--      <el-table-column prop="role" label="用户权限" >-->
+<!--        <template slot-scope="scope">-->
+<!--          <el-tag type="primary" v-if="scope.row.role === 'ROLE_ADMIN'">管理员</el-tag>-->
+<!--          <el-tag type="info" v-if="scope.row.role === 'ROLE_USER'">普通用户</el-tag>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column prop="submitter" label="提交者" ></el-table-column>
       <el-table-column prop="adminManagementName" label="审批" ></el-table-column>
       <el-table-column label="操作" width="300">

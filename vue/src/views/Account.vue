@@ -43,11 +43,18 @@
     <!--          表单主体-->
 
     <el-table :data="tableData" border stripe :header-cell-class-name="'headerBg'"  @selection-change="handleSelectionChange">>
-      <el-table-column type="selection" ></el-table-column>
-      <el-table-column prop="id" label="ID"  width="50"></el-table-column>
-      <el-table-column prop="name" label="事件名称" width="80"></el-table-column>
-      <el-table-column prop="content" label="具体内容" ></el-table-column>
+      <el-table-column type="selection" width="55"></el-table-column>
+      <el-table-column prop="id" label="ID" width="40"></el-table-column>
+      <el-table-column prop="name" label="事件名称" ></el-table-column>
+      <el-table-column prop="content" label="具体内容" width="180"></el-table-column>
       <el-table-column prop="price" label="申请金额" ></el-table-column>
+      <el-table-column prop="quantity" label="数量" width="50"></el-table-column>
+      <el-table-column prop="unit_price" label="单价" width="80">
+        <template slot-scope="scope">
+          {{ (scope.row.price / scope.row.quantity).toFixed(2)}}
+        </template>
+      </el-table-column>
+
       <el-table-column prop="management" label="事件状态" >
         <template slot-scope="scope">
           <el-tag type="danger" v-if="scope.row.management === 2">已结束</el-tag>
@@ -114,6 +121,19 @@
         <el-form-item label="具体内容" >
           <el-input type="textarea" v-model="form.content" autocomplete="off" disabled></el-input>
         </el-form-item>
+        <el-form-item label="申请金额" >
+          <el-input  v-model="form.price" autocomplete="off" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="数量" >
+          <el-input  v-model="form.quantity" autocomplete="off" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="供应商" >
+          <el-input  v-model="form.supplier" autocomplete="off" disabled></el-input>
+        </el-form-item>
+        <el-form-item label="生产商" >
+          <el-input  v-model="form.manufacturer" autocomplete="off" disabled></el-input>
+        </el-form-item>
+
 
 
       </el-form>

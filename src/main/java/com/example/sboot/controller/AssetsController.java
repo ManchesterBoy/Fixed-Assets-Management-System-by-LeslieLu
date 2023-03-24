@@ -177,6 +177,12 @@ public class AssetsController {
             if(adminUser1 != null){
                 record.setAdminPurchaseName(adminUser1.getNickname());
             }
+
+//            Integer price = record.getPrice();
+//            Integer quantity = record.getQuantity();
+//            Integer unit_price = price / quantity;
+//            record.setUnit_price(unit_price);
+
         }
 
 
@@ -328,7 +334,7 @@ public class AssetsController {
     }
 
     /**
-     * allocation页面的分页查询
+     * management页面的分页查询
      */
 
     @GetMapping("/page/management")

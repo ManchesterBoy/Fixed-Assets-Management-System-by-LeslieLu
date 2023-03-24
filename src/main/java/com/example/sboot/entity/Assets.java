@@ -108,6 +108,26 @@ public class Assets implements Serializable {
      */
     private Integer price;
 
+    /**
+     * 单价
+     */
+    @TableField(exist = false)
+    private Integer unit_price;
+
+    /**
+     * 数量
+     */
+    private Integer quantity;
+
+    /**
+     * 供应商
+     */
+    private String supplier;
+
+    /**
+     * 生产商
+     */
+    private String manufacturer;
 
     @TableField(exist = false)
     private String  role;       //提交者的角色权限
